@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace FiveBelowShop
 {
@@ -8,6 +9,7 @@ namespace FiveBelowShop
     {
         static void Main(string[] args)
         {
+            Terminal.StartTerminal();
 
             List<Product> productList = new List<Product>()
             {
@@ -56,13 +58,19 @@ namespace FiveBelowShop
             Product product = new Product();
             product.ProductToList(productList);
 
+            Terminal.displayItemList(productList);
+
             Console.WriteLine("Hello World!");
 
-            List<Product> receiptList = productList.Select(receipt => new Product { Name = receipt.Name,  Price = receipt.Price, Quantity = receipt.Quantity }).ToList();
+            List<Product> receiptList = productList.Select(receipt => new Product { Name = receipt.Name, Price = receipt.Price, Quantity = receipt.Quantity }).ToList();
             product.InputToReceipt(receiptList);
 
+            string input = Console.ReadLine();
+
+            Product.AddToReceipt(input, receiptList);
         }
     }
 }
+
 
 
