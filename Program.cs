@@ -8,6 +8,7 @@ namespace FiveBelowShop
     {
         static void Main(string[] args)
         {
+            Terminal.StartTerminal();
 
             List<Product> productList = new List<Product>()
             {
