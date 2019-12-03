@@ -34,14 +34,14 @@ namespace FiveBelowShop
             //validate
         }
 
-        public static string displayItemList()
-        {
-            //first point the StreamReader object at the text file that holds the current inventory in CSV format
+        //public static string displayItemList()
+        //{
+        //    //first point the StreamReader object at the text file that holds the current inventory in CSV format
 
-            foreach (Product product in productList)
-            {
-                Console.WriteLine(List<Product>);
-            }
+        //    foreach (Product product in productList)
+        //    {
+        //        Console.WriteLine(List<Product>);
+        //    }
     
 
             ////string array to hold the split CSV row before parsing into necessary Car object
@@ -74,42 +74,71 @@ namespace FiveBelowShop
 
             ////close the text file when done with File I/O operations
             //sr.Close();
-        }
 
-        public static string AddItem(string item1)
+        }
+        //we display the menu
+        public static void displayItemList(List<Product> p)
         {
             return item1;
         }
+            foreach (Product prod in p)
+            {
+                Console.WriteLine($"{prod.Category,-15} { prod.Name,-35} { prod.Price,-10} ");
+            }
+            ////user selects the item 
+            //Console.WriteLine("Please select the quantity of the item");
+            //    //user selects the quantity
+            //    //display the line total
+            //    Console.WriteLine("Your total is: " + lineTotal);
+            //    Console.WriteLine("Would you like to continue shopping?");
+            //    //allow user to choose
+            //    //if yes display menu if no take them to check out
+            //    //repeat
+            //    Console.WriteLine("Your current total is " + lineTotal + " how will you be paying today, cash, card or check?");
+            //    //user selects form of payment
+            //    //regex comes in
+            //    Console.WriteLine("Your order has been processed! Would you like to place another order? (y/n)");
+            //    //validate
+            //}
 
-        public static int itemAmount(int itemQuantity)
-        {
-            return itemQuantity;
-        }
 
-        public static double cartAmount(double cartTotal)
-        {
-            return cartTotal;
-        }
 
-        public static string continueShop(string userRepeat)
-        {
-            //maybe make this a bool
-            return userRepeat;
-        }
+            //public static string AddItem(string item1)
+            //{
+            //    return 1;
+            //}
 
-        public static string paymentForm(string paymentOption)
-        {
-            return paymentOption;
-        }
+            //public static int itemAmount(int itemQuantity)
+            //{
+            //    return itemQuantity;
+            //}
 
-        public static string displayRet(string displayRept)
-        {
-            return displayRept;
-        }
+            //public static double cartAmount(double cartTotal)
+            //{
+            //    return cartTotal;
+            //}
 
-        public static bool paymentAccept(bool paymentTrue)
-        {
-            return paymentTrue;
+            //public static string continueShop(string userRepeat)
+            //{
+            //    //maybe make this a bool
+            //    return userRepeat;
+            //}
+
+            //public static string paymentForm(string paymentOption)
+            //{
+            //    return paymentOption;
+            //}
+
+            //public static string displayRet(string displayRept)
+            //{
+            //    return displayRept;
+            //}
+
+            //public static bool paymentAccept(bool paymentTrue)
+            //{
+            //    return paymentTrue;
+            //}
         }
     }
 }
+

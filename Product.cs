@@ -74,6 +74,19 @@ namespace FiveBelowShop
             }
             sw.Close();
         }
+        public static void AddToReceipt(string s, List<Product> P)
+        {
+            foreach (Product prod in P)
+            {
+                
+                //compare to list
+                if (s == prod.Name)
+
+                {
+                    Console.WriteLine($"{prod.Name}, {prod.Price}, {prod.Quantity}, {prod.Category}");
+                }
+            }
+        }
 
         //method to return Receipt Object
         //public List<Product> CSVToReceipt()
