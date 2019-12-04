@@ -78,12 +78,17 @@ namespace FiveBelowShop
         {
             foreach (Product prod in P)
             {
-                
                 //compare to list
                 if (s == prod.Name)
 
                 {
                     Console.WriteLine($"{prod.Name}, {prod.Price}, {prod.Quantity}, {prod.Category}");
+                    StreamWriter sw = new StreamWriter(@"..\..\..\Receipt.txt");
+
+                    string csv = $"{prod.Name},{prod.Price},{prod.Quantity}";
+                    sw.WriteLine(csv);
+
+                    sw.Close();
                 }
             }
         }

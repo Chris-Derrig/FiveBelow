@@ -63,11 +63,11 @@ namespace FiveBelowShop
             Console.WriteLine("Hello World!");
 
             List<Product> receiptList = productList.Select(receipt => new Product { Name = receipt.Name, Price = receipt.Price, Quantity = receipt.Quantity }).ToList();
-            product.InputToReceipt(receiptList);
+            //product.InputToReceipt(receiptList);
 
             string input = Console.ReadLine();
 
-            Product.AddToReceipt(input, receiptList);
+            Product.AddToReceipt(input, productList);
         }
     }
 }

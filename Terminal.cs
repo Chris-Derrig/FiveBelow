@@ -23,7 +23,7 @@ namespace FiveBelowShop
         {
             foreach (Product prod in p)
             {
-                Console.WriteLine($"{prod.Category,-15} { prod.Name,-35} { prod.Price,-10} ");
+                Console.WriteLine($"{prod.Category,-12} | { prod.Name,-35} | { prod.Price,-10} ");
             }
             ////user selects the item 
             //Console.WriteLine("Please select the quantity of the item");
