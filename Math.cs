@@ -55,5 +55,13 @@ namespace FiveBelowShop
             double grandTotal = subtotal + linetax;
             return grandTotal;
         }
+        public static double ChangeDue(double grandTotal, double cash)
+        {
+
+            Console.WriteLine(Convert.ToDouble(cash));
+            double changedue = grandTotal - cash;
+            return changedue;
+            
+        }
     }
 }
