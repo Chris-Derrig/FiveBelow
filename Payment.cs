@@ -7,6 +7,7 @@ namespace FiveBelowShop
 {
     class Payment
     {
+        #region Payment Methods
         public static void Money()
         {
             Console.Write("Are you paying with Cash or Credit? ");
@@ -20,7 +21,6 @@ namespace FiveBelowShop
             {
                 Cash();
             }
-
         }
 
         public static void Credit()
@@ -78,8 +78,7 @@ namespace FiveBelowShop
                 Console.WriteLine("Please try again.");
                 goto Monay;
             }
-
-
         }
+        #endregion
     }
 }

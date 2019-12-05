@@ -1,1 +1,1 @@
-Fuzzy Slippers,4.29,10
+Minesweeper Game,0.99,10
