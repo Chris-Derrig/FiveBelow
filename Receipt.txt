@@ -1,1 +1,22 @@
+<<<<<<< HEAD
 Minesweeper Game,0.99,10
+=======
+Bettermade Potato Chips,3.49,10, 
+Detroit Style Coney Dog,1.59,10, 
+Sander's Hot Fudge Cream Puff,4.09,10, 
+Greek Salad w/ Chicken,4.99,10, 
+Slice of Detroit Style Deep Dish,3.99,10, 
+Minesweeper Game,0.99,10, 
+Star Wars Lego MiniFiguers Set,3.99,10, 
+Stuffed Animal (Unicorn),4.49,10, 
+Uno Card Game,3.49,10, 
+Ball In Cup,1.99,10, 
+Vernors Soda,0.99,10, 
+Stoh's Detroit Lager,0.99,10, 
+Boston Cooler,2.49,10, 
+1/2 Gallon of Cider,4.99,10, 
+Faygo Rock n Rye,1.49,10, 
+Cozy Matching Family Pajamas,2.49,10, 
+Fuzzy Slippers,4.29,10, 
+Graphic Print Infinity Scarf,3.99,10, 
+>>>>>>> 32e294b2789c8ea71ace2d05309e1b768e681512

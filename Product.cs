@@ -20,12 +20,16 @@ namespace FiveBelowShop
         private double productPrice;
         private int productQuantity;
         
-        
         #endregion
 
         #region Properties
 
         //public properties to allow access to private fields
+        public string Letter
+        {
+            get { return productLetter; }
+            set { productLetter = value; }
+        }
         public string Category
         {
             get { return productCategory; }
@@ -45,11 +49,6 @@ namespace FiveBelowShop
         {
             get { return productQuantity; }
             set { productQuantity = value; }
-        }
-        public string Letter
-        {
-            get { return productLetter; }
-            set { productLetter = value; }
         }
         public string Description
         {
@@ -85,7 +84,7 @@ namespace FiveBelowShop
 
             foreach (Product product in productList)
             {
-                string csv = $"{product.Category},{product.Name},{product.Price},{product.Quantity}";
+                string csv = $"{product.Letter},{product.Category},{product.Name},{product.Price},{product.Quantity}, {product.Description}";
                 sw.WriteLine(csv);
             }
             sw.Close();
@@ -96,7 +95,7 @@ namespace FiveBelowShop
 
             foreach (Product product in receiptList)
             {
-                string csv = $"{product.Name},{product.Price},{product.Quantity}";
+                string csv = $"{product.Letter}{product.Name},{product.Price},{product.Quantity}, {product.Description}";
                 sw.WriteLine(csv);
             }
             sw.Close();
@@ -111,9 +110,12 @@ namespace FiveBelowShop
                 //compare to list
                 if (s.ToLower() == prod.Letter.ToLower())
                 {
-                    Console.WriteLine($"{prod.Name}, {prod.Price}, {prod.Quantity}, {prod.Category}");
+                    Console.WriteLine($"{prod.Letter}, {prod.Name}, {prod.Price}, {prod.Quantity}, {prod.Category}, {prod.Description}");
                     P.Add(prod);
                     Console.WriteLine(P);
+                    double x = prod.Price;
+                    string z = prod.Category;
+                    
                 }
                 //Console.WriteLine();
             }
