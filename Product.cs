@@ -9,12 +9,19 @@ namespace FiveBelowShop
     class Product
     {
         //private fields to hold our objects
+        private string productLetter;
         private string productCategory;
         private string productName;
         private double productPrice;
         private int productQuantity;
+        private string productDescription;
 
         //public properties to allow access to private fields
+        public string Letter
+        {
+            get { return productLetter; }
+            set { productLetter = value; }
+        }
         public string Category
         {
             get { return productCategory; }
@@ -35,6 +42,11 @@ namespace FiveBelowShop
             get { return productQuantity; }
             set { productQuantity = value; }
         }
+        public string Description
+        {
+            get { return productDescription; }
+            set { productDescription = value; }
+        }
 
         //constructors to build Product objects
 
@@ -42,12 +54,14 @@ namespace FiveBelowShop
         {
 
         }
-        public Product(string productName, string productCategory, double productPrice, int productQuantity)
+        public Product(string productLetter, string productName, string productCategory, double productPrice, int productQuantity, string productDescription)
         {
+            Letter = productLetter;
             Name = productName;
             Category = productCategory;
             Price = productPrice;
             Quantity = productQuantity;
+            Description = productDescription;
         }
 
         //method to print to the CSV.
@@ -57,7 +71,7 @@ namespace FiveBelowShop
 
             foreach (Product product in productList)
             {
-                string csv = $"{product.Category},{product.Name},{product.Price},{product.Quantity}";
+                string csv = $"{product.Letter},{product.Category},{product.Name},{product.Price},{product.Quantity}, {product.Description}";
                 sw.WriteLine(csv);
             }
             sw.Close();
@@ -69,7 +83,7 @@ namespace FiveBelowShop
 
             foreach (Product product in receiptList)
             {
-                string csv = $"{product.Name},{product.Price},{product.Quantity}";
+                string csv = $"{product.Letter}{product.Name},{product.Price},{product.Quantity}, {product.Description}";
                 sw.WriteLine(csv);
             }
             sw.Close();
@@ -80,10 +94,13 @@ namespace FiveBelowShop
             {
                 
                 //compare to list
-                if (s == prod.Name)
+                if (s == prod.Letter)
 
                 {
-                    Console.WriteLine($"{prod.Name}, {prod.Price}, {prod.Quantity}, {prod.Category}");
+                    Console.WriteLine($"{prod.Letter},{prod.Name}, {prod.Price}, {prod.Quantity}, {prod.Category}, {prod.Description}");
+                    double x = prod.Price;
+                    string z = prod.Category;
+                    
                 }
             }
         }
