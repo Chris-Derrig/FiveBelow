@@ -58,7 +58,7 @@ namespace FiveBelowShop
             Product product = new Product();
             product.ProductToList(productList);
 
-            Terminal.displayItemList(productList);
+          //  Terminal.displayItemList(productList);
 
             Console.WriteLine("Hello World!");
 
