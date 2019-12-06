@@ -112,12 +112,13 @@ namespace FiveBelowShop
                 {
                     Console.WriteLine($"{prod.Letter}, {prod.Name}, {prod.Price}, {prod.Quantity}, {prod.Category}, {prod.Description}");
                     P.Add(prod);
-                    Console.WriteLine(P);
+                    //Console.WriteLine(P);
                     double x = prod.Price;
                     string z = prod.Category;
                     
+                    
                 }
-                //Console.WriteLine();
+              //  Console.WriteLine();
             }
             return P;
         }
