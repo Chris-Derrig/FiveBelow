@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FiveBelowShop
 {
-    class Math 
+    class Math
     {
         public static double LineTotal(double x, int itemQuantity)
         {
@@ -16,7 +16,7 @@ namespace FiveBelowShop
 
             return linevalue;
         }
-       
+
         public static double TaxedAmount(double linevalue)
         {
             double linetax = linevalue * .06;
@@ -24,22 +24,13 @@ namespace FiveBelowShop
         }
         public static double Subtotal(string userRepeat, double linevalue)
         {
-            if (userRepeat == "y")
-            {
-               double subtotal =  linevalue += linevalue;
-                return subtotal;
-
-            }
-            else
-            {
-               double subtotal = linevalue;
-                return subtotal;
-            }
+            double subtotal = linevalue++;
+            return subtotal;
         }
         public static double Taxtotal(string userRepeat, double linetax)
         {
             if (userRepeat == "y")
-            { 
+            {
                 double taxtotal = linetax += linetax;
                 return taxtotal;
 
@@ -61,7 +52,7 @@ namespace FiveBelowShop
             Console.WriteLine(Convert.ToDouble(cash));
             double changedue = grandTotal - cash;
             return changedue;
-            
+
         }
     }
 }

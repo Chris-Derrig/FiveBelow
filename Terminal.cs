@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
+
 
 namespace FiveBelowShop
 {
@@ -20,18 +22,16 @@ namespace FiveBelowShop
             Console.WriteLine("Hey there, Welcome to Five Below!");
             Console.WriteLine("Here is a menu of what we have in store today, please select your item by typing in the letter!");
             Product.DisplayItemList(HardList.GetProductList());
-            Product.ProductToList(HardList.GetProductList());
-
-
-
-
-
+            //Product.ProductToList(HardList.GetProductList());
             //user selects the item 
-            while (again)
-            {
-                item = Console.ReadLine();
-                Product.AddToReceipt(item, HardList.GetProductList());
-            }
+
+
+            item = Console.ReadLine();
+            Product.AddToReceipt(item, HardList.GetProductList());
+            itemQuantity = Convert.ToInt32(Console.ReadLine());
+            double total = HardList.receiptList.Sum(Product => Product.Price);
+            Console.WriteLine(Math.LineTotal(total, itemQuantity));
+
 
             //user selects the quantity
             //display the line total
