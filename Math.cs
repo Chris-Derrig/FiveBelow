@@ -22,33 +22,21 @@ namespace FiveBelowShop
             double linetax = linevalue * .06;
             return linetax;
         }
-        public static double Subtotal(string userRepeat, double linevalue)
+        public static double Subtotal(double linevalue)
         {
-            if (userRepeat == "y")
-            {
-               double subtotal =  linevalue += linevalue;
+
+           // return linevalue++;//= linevalue;
+               double subtotal = linevalue ++;
                 return subtotal;
 
-            }
-            else
-            {
-               double subtotal = linevalue;
-                return subtotal;
-            }
+
         }
-        public static double Taxtotal(string userRepeat, double linetax)
+        public static double Taxtotal(double linetax)
         {
-            if (userRepeat == "y")
-            { 
-                double taxtotal = linetax += linetax;
+
+            double taxtotal = linetax * .06;
                 return taxtotal;
 
-            }
-            else
-            {
-                double taxtotal = linetax;
-                return taxtotal;
-            }
         }
         public static double Grandtotal(double subtotal, double linetax)
         {

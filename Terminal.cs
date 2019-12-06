@@ -28,9 +28,23 @@ namespace FiveBelowShop
             Console.WriteLine("Please add the quantity of the item chosen.");
             itemQuantity = Convert.ToInt32(Console.ReadLine());
 
-            //
+            //gives line total
             double total = HardList.receiptList.Sum(Product => Product.Price);
             Console.WriteLine(Math.LineTotal(total, itemQuantity));
+
+            //gives subtotal
+            double lineTotal = Math.LineTotal(total, itemQuantity);
+            Console.WriteLine(Math.Subtotal(lineTotal));
+
+            //taxtotal
+            double taxTotal = Math.Taxtotal(lineTotal);
+            Console.WriteLine(Math.Taxtotal(lineTotal));
+
+            //grandtotal
+            Console.WriteLine(Math.Grandtotal(lineTotal, taxTotal));
+
+            //Validate Payment method
+            Payment.Money();
 
         }
     }
