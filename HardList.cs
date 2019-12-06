@@ -28,7 +28,7 @@ namespace FiveBelowShop
                 { new Product ("Q","Fuzzy Slippers","Apparel",  4.29, 10, "Your pet will eat it") },
                 { new Product ("R","Graphic Print Infinity Scarf","Apparel",  3.99, 10, "Guaranteed to be lost within a month") }
         };
-        public static List<Product> receiptList = productList.Select(receipt => new Product { Name = receipt.Name, Price = receipt.Price, Quantity = receipt.Quantity }).ToList();
+        public static List<Product> receiptList = new List<Product>();
 
         public static List<Product> GetProductList()
         {

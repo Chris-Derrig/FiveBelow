@@ -19,7 +19,7 @@ namespace FiveBelowShop
         private string productDescription;
         private double productPrice;
         private int productQuantity;
-        
+
         #endregion
 
         #region Properties
@@ -75,9 +75,12 @@ namespace FiveBelowShop
         }
         #endregion
 
-        
+
         #region Product Methods
-            //method to print to the CSV.
+        //method to print to the CSV.
+
+
+
         public static void ProductToList(List<Product> productList)
         {
             StreamWriter sw = new StreamWriter(@"..\..\..\ProductInventoryDB.txt");
@@ -102,8 +105,7 @@ namespace FiveBelowShop
         }
         public static List<Product> AddToReceipt(string s, List<Product> P)
         {
-            //List<Product> tempList = new List<Product>();
-            //Product product = new Product();
+            //Product prod = new Product();
 
             foreach (Product prod in P.ToList())
             {
@@ -111,15 +113,12 @@ namespace FiveBelowShop
                 if (s.ToLower() == prod.Letter.ToLower())
                 {
                     Console.WriteLine($"{prod.Letter}, {prod.Name}, {prod.Price}, {prod.Quantity}, {prod.Category}, {prod.Description}");
-                    P.Add(prod);
-                    Console.WriteLine(P);
+                    HardList.receiptList.Add(prod);
                     double x = prod.Price;
                     string z = prod.Category;
-                    
                 }
-                //Console.WriteLine();
             }
-            return P;
+            return HardList.receiptList;
         }
         //public static void GetCurrentReceipt()
         //{
@@ -141,7 +140,7 @@ namespace FiveBelowShop
         //    }
         //    sr.Close();
         //}
-        public static Product  CSVToReceipt(string line)
+        public static Product CSVToReceipt(string line)
         {
             //first we split CSV into a new string array
             string[] csvArray = line.Split(',');
@@ -156,7 +155,7 @@ namespace FiveBelowShop
             }
         }
 
-        
+
         #endregion
 
 
