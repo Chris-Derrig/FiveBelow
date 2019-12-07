@@ -4,16 +4,11 @@ using System.Text;
 
 namespace FiveBelowShop
 {
-    class Math
+    class Compute
     {
         public static double LineTotal(double x, int itemQuantity)
         {
-
-
             double linevalue = x * itemQuantity;
-
-
-
             return linevalue;
         }
 
@@ -22,24 +17,17 @@ namespace FiveBelowShop
             double linetax = linevalue * .06;
             return linetax;
         }
-        public static double Subtotal(string userRepeat, double linevalue)
+        public static double Subtotal(double linevalue)
         {
             double subtotal = linevalue++;
             return subtotal;
         }
-        public static double Taxtotal(string userRepeat, double linetax)
+        public static double Taxtotal(double linetax)
         {
-            if (userRepeat == "y")
-            {
-                double taxtotal = linetax += linetax;
-                return taxtotal;
 
-            }
-            else
-            {
-                double taxtotal = linetax;
-                return taxtotal;
-            }
+            double taxtotal = linetax * .06;
+            return taxtotal;
+
         }
         public static double Grandtotal(double subtotal, double linetax)
         {
