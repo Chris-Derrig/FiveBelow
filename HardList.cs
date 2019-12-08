@@ -7,6 +7,7 @@ namespace FiveBelowShop
 {
     class HardList
     {
+        #region lists, both private and public
         private static List<Product> productList = new List<Product>()
             {
                 { new Product ("A", "Bettermade Potato Chips","Food", 3.49, 10, "Best Chips Ever") },
@@ -28,9 +29,12 @@ namespace FiveBelowShop
                 { new Product ("Q","Fuzzy Slippers","Apparel",  4.29, 10, "Your pet will eat it") },
                 { new Product ("R","Graphic Print Infinity Scarf","Apparel",  3.99, 10, "Guaranteed to be lost within a month") }
         };
-        public static List<Product> receiptList = new List<Product>();
-        public static List<Product> tempList = new List<Product>();
+        private static List<Product> receiptList = new List<Product>();
+        public static List<double> quantityList = new List<double>();
+        #endregion
 
+
+        #region methods to return private lists
         public static List<Product> GetProductList()
         {
             return productList;
@@ -40,5 +44,6 @@ namespace FiveBelowShop
         { 
             return receiptList;
         }
+        #endregion
     }
 }
