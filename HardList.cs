@@ -29,6 +29,7 @@ namespace FiveBelowShop
                 { new Product ("R","Graphic Print Infinity Scarf","Apparel",  3.99, 10, "Guaranteed to be lost within a month") }
         };
         public static List<Product> receiptList = new List<Product>();
+        public static List<Product> tempList = new List<Product>();
 
         public static List<Product> GetProductList()
         {

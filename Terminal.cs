@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace FiveBelowShop
 {
@@ -10,86 +11,92 @@ namespace FiveBelowShop
         #region Terminal Methods
         public static void StartTerminal()
         {
-            int lineTotal = 3;
-            string item;
-            int itemQuantity;
-            string userRepeat;
-            bool again = true;
-            bool repeat = true;
+            int quantity = 0;
+            string itemQuantity;
+            bool mainRepeat = true;
+            bool repeat1 = true;
+            bool repeat2 = true;
 
-            Console.WriteLine("Hey there, Welcome to Five Below!");
-            Console.WriteLine("Here is a menu of what we have in store today, please select your item by typing in the letter!");
+            Console.WriteLine("Welcome to the Five Below shop!");
+            Console.WriteLine("Here is a menu that you can select from.");
+
+            //display list
             Product.DisplayItemList(HardList.GetProductList());
-            Product.ProductToList(HardList.GetProductList());
+            string item;
 
-
-
-
-
-            //user selects the item 
-            while (again)
+            while (mainRepeat)
             {
+                Console.WriteLine("Please type in the letter of the product you would like to add.");
                 item = Console.ReadLine();
+                //user selects item
+                //Product item is added to receipt
                 Product.AddToReceipt(item, HardList.GetProductList());
+
+                //user selects quantity of the item
+                do
+                {
+                    Console.WriteLine("Please add the quantity of the item chosen.");
+                    itemQuantity = Console.ReadLine();
+                    int i = 0;
+                    int.TryParse(itemQuantity, out i);
+                    if (!int.TryParse(itemQuantity, out i))
+                    {
+                        Console.WriteLine("Try Again");
+                    }
+                    else 
+                    {
+                        repeat1 = false;
+                    }
+                } while (repeat1);
+
+                Console.WriteLine(Product.ShowObject(item, HardList.GetReceiptList()) + " has been added to the list");
+                Console.WriteLine("Would you like do add another item");
+                //user chooses to add more items or continue to math methods
+                do
+                {
+                    string doAgain = Console.ReadLine();
+                    if (doAgain == "n" || doAgain == "N")
+                    {
+                        repeat2 = false;
+                        mainRepeat = false;
+                    }
+                    else if (doAgain == "y" || doAgain == "Y")
+                    {
+                        repeat2 = false;
+                        mainRepeat = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter either 'Y' or 'N'");
+                        repeat2 = true;
+                    }
+                } while (repeat2);
             }
 
-            //user selects the quantity
-            //display the line total
-            Console.WriteLine("Your total is: " + lineTotal);
-            Console.WriteLine("Would you like to continue shopping?");
-            //allow user to choose
-            //if yes display menu if no take them to check out
-            //repeat
-            Console.WriteLine("Your current total is " + lineTotal + " how will you be paying today, cash, card or check?");
-            //user selects form of payment
-            //regex comes in
-            Console.WriteLine("Your order has been processed! Would you like to place another order? (y/n)");
-            //validate
-            //we display the menu
+            //gives line total (item price * quantity)
+            //double total = Compute.LineTotal(total, quantity);
+            //double total = Product.DisplayLineItem(item, quantity, HardList.GetReceiptList());
+            //HardList.receiptList.ForEach(i => Console.WriteLine("Line Total     " + Compute.LineTotal(Product.SetPrice(item, HardList.receiptList), quantity)));
 
-            //user selects the item 
-            Console.WriteLine("Please select the quantity of the item");
-            //user selects the quantity
-            //display the line total
-            Console.WriteLine("Your total is: " + lineTotal);
-            Console.WriteLine("Would you like to continue shopping?");
-            //allow user to choose
-            //if yes display menu if no take them to check out
-            //repeat
-            Console.WriteLine("Your current total is " + lineTotal + " how will you be paying today, cash, card or check?");
-            //user selects form of payment
-            //regex comes in
-            Console.WriteLine("Your order has been processed! Would you like to place another order? (y/n)");
-            //validate
-            ////user selects the item 
-            Console.WriteLine("Please select the quantity of the item");
-            //user selects the quantity
-            //display the line total
-            Console.WriteLine("Your total is: " + lineTotal);
-            Console.WriteLine("Would you like to continue shopping?");
-            //allow user to choose
-            //if yes display menu if no take them to check out
-            //repeat
-            Console.WriteLine("Your current total is " + lineTotal + " how will you be paying today, cash, card or check?");
-            //user selects form of payment
-            //regex comes in
-            Console.WriteLine("Your order has been processed! Would you like to place another order? (y/n)");
-            //validate
+
+            ////gives subtotal (Sum of all LineTotals)
+            //double lineTotal = Compute.LineTotal(total, quantity);
+            //Console.WriteLine("Subtotal       " + Compute.Subtotal(lineTotal));
+
+            ////taxtotal
+            //double taxTotal = Compute.Taxtotal(lineTotal);
+            //Console.WriteLine("Tax            " + Compute.Taxtotal(lineTotal));
+
+            ////grandtotal
+            //Console.WriteLine("Total          " + Compute.Grandtotal(lineTotal, taxTotal));
+
+            ////Validate Payment method
+            Payment.Money();
         }
-        public static void validateItem(string item)
-        {
-            if (item.ToLower() == "a")
-            {
-                Console.WriteLine("You selected blank");
-            }
-            else
-            {
-                Console.WriteLine("That is an invalid input.");
-            }
-        }
-        #endregion
     }
 }
+
+
 
 //public static string displayItemList()
 //{
@@ -109,7 +116,4 @@ namespace FiveBelowShop
 //    foreach (Product prod in p)
 //    {
 //        Console.WriteLine($"{prod.Category,-15} { prod.Name,-35} { prod.Price,-10} ");
-
-
-
-
+#endregion

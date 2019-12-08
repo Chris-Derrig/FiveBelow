@@ -79,8 +79,6 @@ namespace FiveBelowShop
         #region Product Methods
         //method to print to the CSV.
 
-
-
         public static void ProductToList(List<Product> productList)
         {
             StreamWriter sw = new StreamWriter(@"..\..\..\ProductInventoryDB.txt");
@@ -113,18 +111,24 @@ namespace FiveBelowShop
                 if (s.ToLower() == prod.Letter.ToLower())
                 {
                     Console.WriteLine($"{prod.Letter}, {prod.Name}, {prod.Price}, {prod.Quantity}, {prod.Category}, {prod.Description}");
-
                     HardList.receiptList.Add(prod);
-                    double x = prod.Price;
-                    string z = prod.Category;
-
-
                 }
-
-                   
             }
-            return HardList.receiptList;
+                return HardList.receiptList;
         }
+        public static double SetPrice(string s, List<Product> P)
+        {
+            double x = 0;
+            foreach (Product prod in P)
+            {
+                if (s.ToLower() == prod.Letter.ToLower())
+                {
+                    x = prod.Price;
+                }
+            }
+            return Math.Round((x), 2);
+        }
+
         //public static void GetCurrentReceipt()
         //{
         //    List<Product> receiptList = HardList.GetProductList().Select(receipt => new Product { Name = receipt.Name, Price = receipt.Price, Quantity = receipt.Quantity }).ToList();
@@ -159,38 +163,39 @@ namespace FiveBelowShop
                 Console.WriteLine($"{prod.Letter,-2} | {prod.Category,-12} | { prod.Name,-35} | { prod.Price,-10} ");
             }
         }
+        public static double DisplayLineItem(string s, int i, List<Product> P)
+        {
+            double x = 0;
+            foreach (Product prod in P)
+            {
+                if (s.ToLower() == prod.Letter.ToLower())
+                {
+                    x = (prod.Price * i);
+                }
+            }
+            return x;
+        }
 
+        public static void DisplayLineItems(string v, int q)
+        {
+            
+
+        }
 
         #endregion
 
-
-
-
-
-
-
-
         //method to return Receipt Object
-        //public List<Product> CSVToReceipt()
-        //{
-        //    List<Product> tempProductList = new List<Product>();
-        //    List<string> receipt = new List<string>();
-
-        //    StreamReader sr = new StreamReader(@"..\..\..\Receipt.txt");
-        //    string line = sr.ReadLine();
-
-        //    while (line != null)
-        //    {
-        //        receipt.Add(line);
-        //        line = sr.ReadLine();
-        //    }
-
-        //    foreach (string csv in receipt)
-        //    {
-        //        string[] csvArray = csv.Split(',');
-        //        tempProductList.Add(new Product(csvArray[0], csvArray[1], double.Parse(csvArray[2]), int.Parse(csvArray[3])));
-
-        //    }
-        //    return tempProductList;
+        public static string ShowObject(string s, List<Product> P)
+        {
+            string n = "";
+            foreach (Product prod in P)
+            {
+                if (s.ToLower() == prod.Letter.ToLower())
+                {
+                    n = prod.Name;
+                }
+            }
+            return n;
+        }
     }
 }
