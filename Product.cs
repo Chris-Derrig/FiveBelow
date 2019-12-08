@@ -76,8 +76,8 @@ namespace FiveBelowShop
         #endregion
 
 
-        #region Product Methods
         //method to print to the CSV.
+        #region Product Methods
 
         public static void ProductToList(List<Product> productList)
         {
