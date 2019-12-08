@@ -31,7 +31,7 @@ namespace FiveBelowShop
                 //user selects item
                 //Product item is added to receipt
                 Product.AddToReceipt(item, HardList.GetProductList());
-
+                
                 //user selects quantity of the item
                 do
                 {
@@ -45,6 +45,7 @@ namespace FiveBelowShop
                     }
                     else 
                     {
+                        
                         repeat1 = false;
                     }
                 } while (repeat1);
@@ -59,6 +60,7 @@ namespace FiveBelowShop
                     {
                         repeat2 = false;
                         mainRepeat = false;
+                        
                     }
                     else if (doAgain == "y" || doAgain == "Y")
                     {
@@ -71,6 +73,7 @@ namespace FiveBelowShop
                         repeat2 = true;
                     }
                 } while (repeat2);
+                
             }
 
             //gives line total (item price * quantity)
@@ -91,6 +94,7 @@ namespace FiveBelowShop
             //Console.WriteLine("Total          " + Compute.Grandtotal(lineTotal, taxTotal));
 
             ////Validate Payment method
+          
             Payment.Money();
         }
     }
