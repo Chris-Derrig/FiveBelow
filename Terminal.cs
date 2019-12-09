@@ -21,8 +21,6 @@ namespace FiveBelowShop
             {
                 List<Product> productList = new List<Product>();
                 List<Product> recieptList = new List<Product>();
-                productList.Clear();
-                recieptList.Clear();
                 productList = HardList.GetProductList();
 
                 int itemQuantity;
@@ -42,13 +40,13 @@ namespace FiveBelowShop
                     Console.WriteLine("Please add the quantity of the item chosen.");
                     itemQuantity = Validate.itemQuantity(Console.ReadLine());
 
-                    double total = Compute.LineTotal(Product.SetPrice(item, HardList.GetProductList()), itemQuantity);
+                    double total = Compute.LineTotal(Product.SetPrice(item, productList), itemQuantity);
 
                     //Product item is added to receipt
-                    Product.AddToReceipt(item, itemQuantity, HardList.GetProductList());
+                    recieptList.Add( Product.AddToReceipt(item, itemQuantity, productList));
 
                     //notify the customer that item is added to cart and print running total
-                    Console.WriteLine(Product.ShowObject(item, HardList.GetReceiptList()) + " has been added to the list\n");
+                    Console.WriteLine(Product.ShowObject(item, recieptList) + " has been added to the list\n");
                     Console.WriteLine($"Your current total is " + Compute.Subtotal(total).ToString("C2"));
 
 
@@ -69,10 +67,10 @@ namespace FiveBelowShop
 
                 Console.WriteLine("\n");
                 Console.WriteLine("Five Below Bodega\n");
-                var combo = HardList.GetReceiptList().Zip(HardList.quantityList, (a, b) => new { N = a.Name, Price = b });
-                foreach (var np in combo)
+                //var combo = HardList.GetReceiptList().Zip(HardList.quantityList, (a, b) => new { N = a.Name, Price = b });
+                foreach (var np in recieptList)
                 {
-                    Console.WriteLine(np.N + "......." + np.Price.ToString("C2"));
+                    Console.WriteLine(np.Quantity + " x " + np.Name + "......." + np.Price.ToString("C2"));
                 }
 
                 //gives subtotal (Sum of all LineTotals)

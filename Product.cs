@@ -75,9 +75,9 @@ namespace FiveBelowShop
 
         #region Product Methods
 
-        public static List<Product> AddToReceipt(string s, int t, List<Product> P)
+        public static Product AddToReceipt(string s, int t, List<Product> P)
         {
-            //Product prod = new Product();
+            Product product = new Product();
 
             foreach (Product prod in P.ToList())
             {
@@ -85,10 +85,11 @@ namespace FiveBelowShop
                 if (s.ToLower() == prod.Letter.ToLower())
                 {
                     Console.WriteLine($"{prod.Name} @ {prod.Price} each -- {prod.Description}");
-                    HardList.GetReceiptList().Add(prod);
+                    prod.Quantity = t;
+                    product = prod;
                 }
             }
-                return HardList.GetReceiptList();
+            return product;
         }
         public static double SetPrice(string s, List<Product> P)
         {
