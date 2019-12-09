@@ -134,6 +134,7 @@ namespace FiveBelowShop
         Monay:
             try
             {
+
                 Console.Write("Please enter the amount of cash you are using: ");
                 string cash = Console.ReadLine();
                 if ((Regex.IsMatch(cash, @"(^[0-9]{1,3}\.[0-9]{2}$)")))
