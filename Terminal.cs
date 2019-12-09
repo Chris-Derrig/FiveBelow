@@ -47,8 +47,8 @@ namespace FiveBelowShop
 
                 //user selects item
 
-                Console.WriteLine("Please type in the LETTER of the product you would like to add.");
 
+                Console.WriteLine("\nPlease type in the LETTER of the product you would like to add.");
                 item = Console.ReadLine();
 
 
@@ -87,9 +87,12 @@ namespace FiveBelowShop
 
 
 
-                //user chooses to add more items or continue to math methods
+                //user chooses to add more items or continue to math method
 
-                Console.WriteLine("Would you like do add another item?/n");
+
+
+                Console.WriteLine("Would you like do add another item?");
+
 
 
 
@@ -137,19 +140,29 @@ namespace FiveBelowShop
 
             #region Display the lineitems line totals, subtotal, tax, grandtotal
 
+<<<<<<< HEAD
+=======
+            Console.WriteLine("\n");
+            Console.WriteLine("Five Below Bodega\n");
+>>>>>>> f32ff98813fd0e641c3dd724742a4574d8deee2c
             var combo = HardList.GetReceiptList().Zip(HardList.quantityList, (a, b) => new { N = a.Name, Price = b });
 
             foreach (var np in combo)
 
             {
+<<<<<<< HEAD
 
                 Console.WriteLine(np.N + "..............." + np.Price);
 
+=======
+                Console.WriteLine(np.N + "......." + np.Price);
+>>>>>>> f32ff98813fd0e641c3dd724742a4574d8deee2c
             }
 
 
 
             //gives subtotal (Sum of all LineTotals)
+<<<<<<< HEAD
 
             Console.WriteLine("Subtotal............$" + Compute.ShowSubtotal());
 
@@ -165,6 +178,15 @@ namespace FiveBelowShop
 
             Console.WriteLine("Total...............$" + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())));
 
+=======
+            Console.WriteLine("Subtotal......................$" + Compute.ShowSubtotal());
+            
+            //gives the tax for the receipt total
+            Console.WriteLine("Tax...........................$" + Compute.Taxtotal(Compute.ShowSubtotal()));
+            
+            //gives the grandtotal
+            Console.WriteLine("Total.........................$" + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())) + "\n");
+>>>>>>> f32ff98813fd0e641c3dd724742a4574d8deee2c
             #endregion
 
 
@@ -176,6 +198,7 @@ namespace FiveBelowShop
         }
 
     }
+
 
 }
 
@@ -200,3 +223,4 @@ namespace FiveBelowShop
 //    {
 //        Console.WriteLine($"{prod.Category,-15} { prod.Name,-35} { prod.Price,-10} ");
 #endregion
+
