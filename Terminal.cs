@@ -8,7 +8,6 @@ namespace FiveBelowShop
 {
     class Terminal
     {
-        #region Terminal Methods
         public static void StartTerminal()
         {
             string itemQuantity;
