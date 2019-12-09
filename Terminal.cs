@@ -11,13 +11,8 @@ namespace FiveBelowShop
         #region Terminal Methods
         public static void StartTerminal()
         {
-            int itemQuantity;
-            bool mainRepeat = true;
-            string item;
-            string anotherOrder;
+            //repeats the terminal
             bool repeatTerminal = true;
-
-
 
             Console.WriteLine("Welcome to the Five Below shop!");
             Console.WriteLine("Here is a menu that you can select from.");
@@ -30,6 +25,11 @@ namespace FiveBelowShop
                 productList.Clear();
                 recieptList.Clear();
                 productList = HardList.GetProductList();
+
+                int itemQuantity;
+                bool mainRepeat = true;
+                string item;
+                string anotherOrder;
 
                 Product.DisplayItemList(productList);
 
