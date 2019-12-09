@@ -68,7 +68,7 @@ namespace FiveBelowShop
         {
 
             double grandTotal = subtotal + linetax;
-            return Math.Round(grandTotal, MidpointRounding.AwayFromZero);
+            return Math.Round(grandTotal, 2);
         }
 
         #endregion

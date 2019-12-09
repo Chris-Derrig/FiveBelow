@@ -10,9 +10,10 @@ namespace FiveBelowShop
 
         public static string startAnother(string anotherOrder)
         {
-            try
+
+            while (true)
             {
-                while (true)
+                try
                 {
                     if (anotherOrder.ToLower() == "y")
                     {
@@ -28,57 +29,57 @@ namespace FiveBelowShop
                         anotherOrder = Console.ReadLine();
                     }
                 }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid input, please try again.");
+                    anotherOrder = Console.ReadLine();
+                }
+
+            }
+
+        
+    }
+
+    public static int itemQuantity(string itemQuantity)
+    {
+        while (true)
+        {
+            try
+            {
+                int quantity = int.Parse(itemQuantity);
+                return quantity;
             }
             catch (Exception)
             {
-                Console.WriteLine("random mwessage");
-                throw;
+                Console.WriteLine("Invalid input. Please enter a number.");
+                itemQuantity = Console.ReadLine();
             }
-       
 
-            }
         }
+    }
 
-        public static int itemQuantity(string itemQuantity)
+    public static string itemLetter(string item)
+    {
+        while (true)
         {
-            while (true)
+            try
             {
-                try
+                if (Regex.IsMatch(item, @"^[A-R|a-r]{1}$"))
                 {
-                    int quantity = int.Parse(itemQuantity);
-                    return quantity;
+                    return item;
                 }
-                catch (Exception)
+                else
                 {
-                    Console.WriteLine("Invalid input. Please enter a number.");
-                    itemQuantity = Console.ReadLine();
-                }
-
-            }
-        }
-
-        public static string itemLetter(string item)
-        {
-            while (true)
-            {
-                try
-                {
-                    if (Regex.IsMatch(item, @"^[A-R|a-r]{1}$"))
-                    {
-                        return item;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input. Please enter a letter A-R");
-                        item = Console.ReadLine();
-                    }
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Invalid input. Please enter a letter A-R.");
+                    Console.WriteLine("Invalid input. Please enter a letter A-R");
                     item = Console.ReadLine();
                 }
             }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter a letter A-R.");
+                item = Console.ReadLine();
+            }
         }
     }
+}
 }
