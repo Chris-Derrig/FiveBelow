@@ -42,8 +42,6 @@ namespace FiveBelowShop
                     Console.WriteLine("Please add the quantity of the item chosen.");
                     itemQuantity = Validate.itemQuantity(Console.ReadLine());
 
-
-
                     double total = Compute.LineTotal(Product.SetPrice(item, HardList.GetProductList()), itemQuantity);
 
                     //Product item is added to receipt
@@ -67,7 +65,6 @@ namespace FiveBelowShop
                         mainRepeat = true;
                     }
                 }
-                #endregion
                 #region Display the lineitems line totals, subtotal, tax, grandtotal
 
                 Console.WriteLine("\n");
