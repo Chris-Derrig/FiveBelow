@@ -32,7 +32,7 @@ namespace FiveBelowShop
                 {
                     Credit();
                 }
-                if (payment.ToLower() == "cash")
+                else if (payment.ToLower() == "cash")
                 {
                     Cash();
                 }
@@ -81,17 +81,17 @@ namespace FiveBelowShop
                     //Next; Jumps down to printing receipt
                     goto Next;
                 }
-                if ((Regex.IsMatch(credit, @"(^5[1-5]\d{14}$)")))
+                else if ((Regex.IsMatch(credit, @"(^5[1-5]\d{14}$)")))
                 {
                     Console.WriteLine("Master Card.. Valid Input");
                     goto Next;
                 }
-                if ((Regex.IsMatch(credit, @"(^6(?:011\d\d|5\d{4}|4[4-9]\d{3}|22(?:1(?:2[6-9]|[3-9]\d)|[2-8]\d\d|9(?:[01]\d|2[0-5])))\d{10}$)")))
+                else if ((Regex.IsMatch(credit, @"(^6(?:011\d\d|5\d{4}|4[4-9]\d{3}|22(?:1(?:2[6-9]|[3-9]\d)|[2-8]\d\d|9(?:[01]\d|2[0-5])))\d{10}$)")))
                 {
                     Console.WriteLine("Discover Card.. Valid Input");
                     goto Next;
                 }
-                if ((Regex.IsMatch(credit, @"(^3[47]\d{13}$)")))
+                else if ((Regex.IsMatch(credit, @"(^3[47]\d{13}$)")))
                 {
                     Console.WriteLine("American Express.. Valid Input");
                     goto Next;
@@ -184,7 +184,7 @@ namespace FiveBelowShop
                 {
                     Console.WriteLine("Check");
                 }
-                if ((!Regex.IsMatch(cash, @"(^[0-9]{9}$)")))
+                else if ((!Regex.IsMatch(cash, @"(^[0-9]{9}$)")))
                 {
                     Console.WriteLine("Please try again.");
                     //if invalid input shoots back up to Chekers:
