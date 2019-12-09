@@ -10,21 +10,31 @@ namespace FiveBelowShop
 
         public static string startAnother(string anotherOrder)
         {
-            while (true)
+            try
             {
-                if (anotherOrder.ToLower() == "y") 
+                while (true)
                 {
-                    return anotherOrder.ToLower();
+                    if (anotherOrder.ToLower() == "y")
+                    {
+                        return anotherOrder.ToLower();
+                    }
+                    else if (anotherOrder.ToLower() == "n")
+                    {
+                        return anotherOrder.ToLower();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter (y or n)");
+                        anotherOrder = Console.ReadLine();
+                    }
                 }
-                else if (anotherOrder.ToLower() == "n")
-                {
-                    return anotherOrder.ToLower();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please enter (y or n)");
-                    anotherOrder = Console.ReadLine();
-                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("random mwessage");
+                throw;
+            }
+       
 
             }
         }
