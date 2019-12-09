@@ -1,48 +1,89 @@
 ﻿using System;
+
 using System.Collections.Generic;
+
 using System.Text;
 
+using System.Linq;
+
+
+
 namespace FiveBelowShop
+
 {
+
     class Compute
+
     {
+
+        #region Methods to perform receipt math
+
         public static double LineTotal(double x, int itemQuantity)
+
         {
-            double linevalue = Math.Round((x * itemQuantity),MidpointRounding.AwayFromZero);
+
+            double linevalue = x * itemQuantity;
+
+            HardList.quantityList.Add(linevalue);
+
             return linevalue;
+
         }
 
         public static double TaxedAmount(double linevalue)
+
         {
-            double linetax = Math.Round((linevalue * .06), MidpointRounding.AwayFromZero);
+
+            double linetax = linevalue * .06;
+
             return linetax;
+
         }
+
         public static double Subtotal(double linevalue)
+
         {
-            double subtotal = 0;
-            subtotal += linevalue;
+
+            double subtotal = HardList.quantityList.Sum();
+
             return subtotal;
+
         }
-        public static double Taxtotal(double subtotal)
+
+        public static double ShowSubtotal()
+
         {
-            //or diuble taxtotal += linetax+;
-            double taxtotal = Math.Round((subtotal * .06), MidpointRounding.AwayFromZero);
+
+            double subtotal = HardList.quantityList.Sum();
+
+            return subtotal;
+
+        }
+
+        public static double Taxtotal(double linetax)
+
+        {
+
+
+
+            double taxtotal = linetax * .06;
+
             return taxtotal;
 
         }
-        public static double Grandtotal(double subtotal, double taxtotal)
+
+        public static double Grandtotal(double subtotal, double linetax)
+
         {
-            double grandTotal = subtotal + taxtotal;
+
+            double grandTotal = subtotal + linetax;
+
             return grandTotal;
-        }
-        public static double ChangeDue(double grandTotal, double cash)
-        {
-            Convert.ToDouble(cash);
-
-            //.WriteLine(Convert.ToDouble(cash));
-            double changedue = grandTotal - cash;
-            return changedue;
 
         }
+
+        #endregion
+
     }
+
 }
