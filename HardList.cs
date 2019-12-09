@@ -23,7 +23,7 @@ namespace FiveBelowShop
                 { new Product ("K","Vernors Soda","Beverages", .99, 10, "Just a few Years old- Totally fine") },
                 { new Product ("L","Stoh's Detroit Lager","Beverages", .99, 10, "Drink up") },
                 { new Product ("M","Boston Cooler","Beverages", 2.49, 10, "Great way to break your new years res") },
-                { new Product ("N","1/2 Gallon of Cider","Beverages", 4.99, 10, "add iquor and you have a recipe for a great time") },
+                { new Product ("N","1/2 Gallon of Cider","Beverages", 4.99, 10, "add liquor and you have a recipe for a great time") },
                 { new Product ("O","Faygo Rock n Rye","Beverages", 1.49, 10, "Buy it") },
                 { new Product ("P","Cozy Matching Family Pajamas","Apparel",  2.49, 10, "This is a steal") },
                 { new Product ("Q","Fuzzy Slippers","Apparel",  4.29, 10, "Your pet will eat it") },
@@ -41,7 +41,7 @@ namespace FiveBelowShop
         }
 
         public static List<Product> GetReceiptList()
-        { 
+        {
             return receiptList;
         }
         #endregion

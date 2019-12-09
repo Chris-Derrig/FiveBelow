@@ -172,11 +172,11 @@ namespace FiveBelowShop
             {
                 Console.Write("Please enter the check number: ");
                 string cash = Console.ReadLine();
-                if ((Regex.IsMatch(cash, @"(^[0-9]{4}$)")))
+                if ((Regex.IsMatch(cash, @"(^[0-9]{9}$)")))
                 {
                     Console.WriteLine("Check");
                 }
-                if ((!Regex.IsMatch(cash, @"(^[0-9]{4}$)")))
+                if ((!Regex.IsMatch(cash, @"(^[0-9]{9}$)")))
                 {
                     Console.WriteLine("Please try again.");
                     //if invalid input shoots back up to Chekers:

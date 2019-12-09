@@ -102,17 +102,17 @@ namespace FiveBelowShop
             }
             return Math.Round((x), 2);
         }
-        public static int ReturnQuantity(string s)
-        {
-            int i;
-            int.TryParse(s, out i);
-            return i;
-        }
+        //public static int ReturnQuantity(string s)
+        //{
+        //    int i;
+        //    int.TryParse(s, out i);
+        //    return i;
+        //}
         public static void DisplayItemList(List<Product> P)
         {
             foreach (Product prod in P)
             {
-                Console.WriteLine($"{prod.Letter,-2} | {prod.Category,-12} | { prod.Name,-35} | { prod.Price,-10} ");
+                Console.WriteLine($"{prod.Letter,-2} | {prod.Category,-12} | { prod.Name,-35} | { prod.Price.ToString("C2"),-10} ");
             }
         }
         public static string ShowObject(string s, List<Product> P)

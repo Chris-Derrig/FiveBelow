@@ -11,7 +11,7 @@ J,Toys,Ball In Cup,1.99,10, Overpriced
 K,Beverages,Vernors Soda,0.99,10, Just a few Years old- Totally fine
 L,Beverages,Stoh's Detroit Lager,0.99,10, Drink up
 M,Beverages,Boston Cooler,2.49,10, Great way to break your new years res
-N,Beverages,1/2 Gallon of Cider,4.99,10, add iquor and you have a recipe for a great time
+N,Beverages,1/2 Gallon of Cider,4.99,10, add liquor and you have a recipe for a great time
 O,Beverages,Faygo Rock n Rye,1.49,10, Buy it
 P,Apparel,Cozy Matching Family Pajamas,2.49,10, This is a steal
 Q,Apparel,Fuzzy Slippers,4.29,10, Your pet will eat it
