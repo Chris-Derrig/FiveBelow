@@ -12,33 +12,33 @@ namespace FiveBelowShop
         {
             double linevalue = x * itemQuantity;
             HardList.quantityList.Add(linevalue);
-            return linevalue;
+            return Math.Round(linevalue,2);
         }
         public static double TaxedAmount(double linevalue)
         {
             double linetax = linevalue * .06;
-            return linetax;
+            return Math.Round(linetax, 2);
         }
         public static double Subtotal(double linevalue)
         {
             double subtotal = HardList.quantityList.Sum();
-            return subtotal;
+            return Math.Round(subtotal, 2);
         }
         public static double ShowSubtotal()
         {
             double subtotal = HardList.quantityList.Sum();
-            return subtotal;
+            return Math.Round(subtotal, 2);
         }
         public static double Taxtotal(double linetax)
         {
 
             double taxtotal = linetax * .06;
-            return taxtotal;
+            return Math.Round(taxtotal, 2);
         }
         public static double Grandtotal(double subtotal, double linetax)
         {
             double grandTotal = subtotal + linetax;
-            return grandTotal;
+            return Math.Round(grandTotal, 2);
         }
         #endregion
     }

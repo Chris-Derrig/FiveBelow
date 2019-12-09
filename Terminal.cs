@@ -26,7 +26,7 @@ namespace FiveBelowShop
             while (mainRepeat)
             {
                 //user selects item
-                Console.WriteLine("Please type in the LETTER of the product you would like to add.");
+                Console.WriteLine("\nPlease type in the LETTER of the product you would like to add.");
                 item = Console.ReadLine();
                 
                 do
@@ -47,7 +47,7 @@ namespace FiveBelowShop
                 } while (repeat1);
 
                 //user chooses to add more items or continue to math methods
-                Console.WriteLine("Would you like do add another item?/n");
+                Console.WriteLine("Would you like do add another item?");
 
                 do
                 {
@@ -71,20 +71,23 @@ namespace FiveBelowShop
             }
 
             #region Display the lineitems line totals, subtotal, tax, grandtotal
+
+            Console.WriteLine("\n");
+            Console.WriteLine("Five Below Bodega\n");
             var combo = HardList.GetReceiptList().Zip(HardList.quantityList, (a, b) => new { N = a.Name, Price = b });
             foreach (var np in combo)
             {
-                Console.WriteLine(np.N + "..............." + np.Price);
+                Console.WriteLine(np.N + "......." + np.Price);
             }
 
             //gives subtotal (Sum of all LineTotals)
-            Console.WriteLine("Subtotal............$" + Compute.ShowSubtotal());
+            Console.WriteLine("Subtotal......................$" + Compute.ShowSubtotal());
             
             //gives the tax for the receipt total
-            Console.WriteLine("Tax.................$" + Compute.Taxtotal(Compute.ShowSubtotal()));
+            Console.WriteLine("Tax...........................$" + Compute.Taxtotal(Compute.ShowSubtotal()));
             
             //gives the grandtotal
-            Console.WriteLine("Total...............$" + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())));
+            Console.WriteLine("Total.........................$" + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())) + "\n");
             #endregion
             
             ////Validate Payment method
