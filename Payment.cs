@@ -134,12 +134,20 @@ namespace FiveBelowShop
         Monay:
             try
             {
-
                 Console.Write("Please enter the amount of cash you are using: ");
                 string cash = Console.ReadLine();
                 if ((Regex.IsMatch(cash, @"(^[0-9]{1,3}\.[0-9]{2}$)")))
                 {
-                    Console.WriteLine("Cash");
+                    if (Change(cash) < Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())))
+                    {
+                        Console.WriteLine("Cash");
+                        Console.WriteLine("Your Balance is " + ChangeDue(Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())), Change(cash)).ToString("C2") + "\n");
+
+                    }
+                    else if (Change(cash) >= Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())))
+                    {
+                        Console.WriteLine("Your Change is " + ChangeDue(Change(cash), Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal()))).ToString("C2") + "\n");
+                    }
                 }
                 if ((!Regex.IsMatch(cash, @"(^[0-9]{1,3}\.[0-9]{2}$)")))
                 {
@@ -172,11 +180,11 @@ namespace FiveBelowShop
             {
                 Console.Write("Please enter the check number: ");
                 string cash = Console.ReadLine();
-                if ((Regex.IsMatch(cash, @"(^[0-9]{4}$)")))
+                if ((Regex.IsMatch(cash, @"(^[0-9]{9}$)")))
                 {
                     Console.WriteLine("Check");
                 }
-                if ((!Regex.IsMatch(cash, @"(^[0-9]{4}$)")))
+                if ((!Regex.IsMatch(cash, @"(^[0-9]{9}$)")))
                 {
                     Console.WriteLine("Please try again.");
                     //if invalid input shoots back up to Chekers:
@@ -199,6 +207,28 @@ namespace FiveBelowShop
                 //goes back to the top asking how to input there check number
                 goto Checkers;
             }
+        }
+        public static double Change(string s)
+        {
+            while (true)
+            {
+                try
+                {
+                    double i = double.Parse(s);
+                    return i;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    s = Console.ReadLine();
+                }
+            }
+        }
+        public static double ChangeDue(double i, double d)
+        {
+            double c = i - d;
+            return c;
+
         }
         #endregion
     }

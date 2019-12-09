@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 
 using System.Collections.Generic;
 
@@ -147,15 +149,16 @@ namespace FiveBelowShop
         #endregion
 
 
+
         #region Product Methods
 
 
 
-        public static List<Product> AddToReceipt(string s, int t, List<Product> P)
+        public static Product AddToReceipt(string s, int t, List<Product> P)
 
         {
 
-            //Product prod = new Product();
+            Product product = new Product();
 
 
 
@@ -171,13 +174,15 @@ namespace FiveBelowShop
 
                     Console.WriteLine($"{prod.Name} @ {prod.Price} each -- {prod.Description}");
 
-                    HardList.GetReceiptList().Add(prod);
+                    prod.Quantity = t;
+
+                    product = prod;
 
                 }
 
             }
 
-            return HardList.GetReceiptList();
+            return product;
 
         }
 
@@ -205,17 +210,17 @@ namespace FiveBelowShop
 
         }
 
-        public static int ReturnQuantity(string s)
+        //public static int ReturnQuantity(string s)
 
-        {
+        //{
 
-            int i;
+        //    int i;
 
-            int.TryParse(s, out i);
+        //    int.TryParse(s, out i);
 
-            return i;
+        //    return i;
 
-        }
+        //}
 
         public static void DisplayItemList(List<Product> P)
 
@@ -225,7 +230,7 @@ namespace FiveBelowShop
 
             {
 
-                Console.WriteLine($"{prod.Letter,-2} | {prod.Category,-12} | { prod.Name,-35} | { prod.Price,-10} ");
+                Console.WriteLine($"{prod.Letter,-2} | {prod.Category,-12} | { prod.Name,-35} | { prod.Price.ToString("C2"),-10} ");
 
             }
 

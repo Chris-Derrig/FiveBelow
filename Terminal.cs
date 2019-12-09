@@ -1,29 +1,32 @@
-﻿using System;
+﻿
+
+using System;
+
 using System.Collections.Generic;
+
 using System.IO;
+
 using System.Text;
+
 using System.Linq;
 
+
+
 namespace FiveBelowShop
+
 {
 
     class Terminal
 
     {
 
-        #region Terminal Methods
-
         public static void StartTerminal()
 
         {
 
-            string itemQuantity;
+            //repeats the terminal
 
-            bool mainRepeat = true;
-
-            bool repeat1 = true;
-
-            bool repeat2 = true;
+            bool repeatTerminal = true;
 
 
 
@@ -35,169 +38,172 @@ namespace FiveBelowShop
 
             //display list
 
-            Product.DisplayItemList(HardList.GetProductList());
-
-            string item;
-
-
-
-            while (mainRepeat)
+            while (repeatTerminal)
 
             {
 
-                //user selects item
+                List<Product> productList = new List<Product>();
+
+                List<Product> recieptList = new List<Product>();
+
+                productList = HardList.GetProductList();
 
 
-                Console.WriteLine("\nPlease type in the LETTER of the product you would like to add.");
-                item = Console.ReadLine();
+
+                int itemQuantity;
+
+                bool mainRepeat = true;
+
+                string item;
+
+                string anotherOrder;
 
 
 
-                do
+                Product.DisplayItemList(productList);
+
+
+
+                while (mainRepeat)
 
                 {
+
+                    //user selects item
+
+                    Console.WriteLine("\nPlease type in the LETTER of the product you would like to add.");
+
+                    item = Validate.itemLetter(Console.ReadLine());
+
+
 
                     //user selects quantity of the item
 
                     Console.WriteLine("Please add the quantity of the item chosen.");
 
-                    itemQuantity = Console.ReadLine();
+                    itemQuantity = Validate.itemQuantity(Console.ReadLine());
 
-                    double total = Compute.LineTotal(Product.SetPrice(item, HardList.GetProductList()), Product.ReturnQuantity(itemQuantity));
+
+
+                    double total = Compute.LineTotal(Product.SetPrice(item, productList), itemQuantity);
 
 
 
                     //Product item is added to receipt
 
-                    Product.AddToReceipt(item, Product.ReturnQuantity(itemQuantity), HardList.GetProductList());
+                    recieptList.Add(Product.AddToReceipt(item, itemQuantity, productList));
 
 
 
                     //notify the customer that item is added to cart and print running total
 
-                    Console.WriteLine(Product.ShowObject(item, HardList.GetReceiptList()) + " has been added to the list\n");
+                    Console.WriteLine(Product.ShowObject(item, recieptList) + " has been added to the list\n");
 
-                    Console.WriteLine($"Your current total is " + Compute.Subtotal(total));
-
-                    repeat1 = false;
-
-
-
-                } while (repeat1);
-
-
-
-                //user chooses to add more items or continue to math method
-
-
-
-                Console.WriteLine("Would you like do add another item?");
+                    Console.WriteLine($"Your current total is " + Compute.Subtotal(total).ToString("C2"));
 
 
 
 
-                do
 
-                {
+                    //user chooses to add more items or continue to math methods
 
-                    string doAgain = Console.ReadLine();
+                    Console.WriteLine("Would you like to add another item (y or n)?");
 
-                    if (doAgain == "n" || doAgain == "N")
+
+
+                    string doAgain = Validate.startAnother(Console.ReadLine());
+
+                    if (doAgain == "n")
 
                     {
-
-                        repeat2 = false;
 
                         mainRepeat = false;
 
                     }
 
-                    else if (doAgain == "y" || doAgain == "Y")
+                    else if (doAgain == "y")
 
                     {
-
-                        repeat2 = false;
 
                         mainRepeat = true;
 
                     }
 
-                    else
+                }
 
-                    {
+                #region Display the lineitems line totals, subtotal, tax, grandtotal
 
-                        Console.WriteLine("Please enter either 'Y' or 'N'");
 
-                        repeat2 = true;
 
-                    }
+                Console.WriteLine("\n");
 
-                } while (repeat2);
+                Console.WriteLine("Five Below Bodega\n");
+
+                //var combo = HardList.GetReceiptList().Zip(HardList.quantityList, (a, b) => new { N = a.Name, Price = b });
+
+                foreach (var np in recieptList)
+
+                {
+
+                    Console.WriteLine(np.Quantity + " x " + np.Name + "......." + np.Price.ToString("C2"));
+
+                }
+
+
+
+                //gives subtotal (Sum of all LineTotals)
+
+                Console.WriteLine("Subtotal......................" + Compute.ShowSubtotal().ToString("C2"));
+
+
+
+                //gives the tax for the receipt total
+
+                Console.WriteLine("Tax..........................." + Compute.Taxtotal(Compute.ShowSubtotal()).ToString("C2"));
+
+
+
+                //gives the grandtotal
+
+                Console.WriteLine("Total........................." + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())).ToString("C2") + "\n");
+
+                #endregion
+
+
+
+                ////Validate Payment method
+
+                Payment.Money();
+
+
+
+                Console.WriteLine("Would you like to place another order (y or n)?");
+
+                anotherOrder = Validate.startAnother(Console.ReadLine());
+
+                if (anotherOrder == "n")
+
+                {
+
+                    repeatTerminal = false;
+
+                    Console.WriteLine("Thank you for shopping!");
+
+                }
+
+                else if (anotherOrder == "y")
+
+                {
+
+                    repeatTerminal = true;
+
+                }
 
             }
-
-
-
-            #region Display the lineitems line totals, subtotal, tax, grandtotal
-
-            Console.WriteLine("\n");
-            Console.WriteLine("Five Below Bodega\n");
-            var combo = HardList.GetReceiptList().Zip(HardList.quantityList, (a, b) => new { N = a.Name, Price = b });
-
-            foreach (var np in combo)
-
-            {
-
-                Console.WriteLine(np.N + "......." + np.Price);
-
-            }
-
-
-
-            //gives subtotal (Sum of all LineTotals)
-
-            Console.WriteLine("Subtotal......................$" + Compute.ShowSubtotal());
-            
-            //gives the tax for the receipt total
-            Console.WriteLine("Tax...........................$" + Compute.Taxtotal(Compute.ShowSubtotal()));
-            
-            //gives the grandtotal
-            Console.WriteLine("Total.........................$" + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())) + "\n");
-
-            #endregion
-
-
-
-            ////Validate Payment method
-
-            Payment.Money();
 
         }
 
     }
 
 
+
 }
-
-
-
-//public static string displayItemList()
-//{
-//    //first point the StreamReader object at the text file that holds the current inventory in CSV format
-
-//    foreach (Product product in productList)
-//    {
-//        Console.WriteLine(List<Product>);
-//    }
-
-//}
-//we display the menu
-//public static void displayItemList(List<Product> p)
-//{
-//    return item1;
-//}
-//    foreach (Product prod in p)
-//    {
-//        Console.WriteLine($"{prod.Category,-15} { prod.Name,-35} { prod.Price,-10} ");
-#endregion
-
