@@ -95,25 +95,3 @@ namespace FiveBelowShop
         }
     }
 }
-
-
-
-//public static string displayItemList()
-//{
-//    //first point the StreamReader object at the text file that holds the current inventory in CSV format
-
-//    foreach (Product product in productList)
-//    {
-//        Console.WriteLine(List<Product>);
-//    }
-
-//}
-//we display the menu
-//public static void displayItemList(List<Product> p)
-//{
-//    return item1;
-//}
-//    foreach (Product prod in p)
-//    {
-//        Console.WriteLine($"{prod.Category,-15} { prod.Name,-35} { prod.Price,-10} ");
-#endregion

@@ -73,11 +73,6 @@ namespace FiveBelowShop
         }
         #endregion
 
-<<<<<<< HEAD
-
-        //method to print to the CSV.
-=======
->>>>>>> cea8bad53266a01082a5ea344e1751a27040de14
         #region Product Methods
 
         public static List<Product> AddToReceipt(string s, int t, List<Product> P)
