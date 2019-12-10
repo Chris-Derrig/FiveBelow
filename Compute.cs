@@ -37,13 +37,6 @@ namespace FiveBelowShop
             return Math.Round(linetax, 2);
         }
 
-        public static double Subtotal(double linevalue)
-
-        {
-
-            double subtotal = HardList.quantityList.Sum();
-            return Math.Round(subtotal, 2);
-        }
 
         public static double ShowSubtotal()
 

@@ -98,7 +98,7 @@ namespace FiveBelowShop
 
                     Console.WriteLine(Product.ShowObject(item, recieptList) + " has been added to the list\n");
 
-                    Console.WriteLine($"Your current total is " + Compute.Subtotal(total).ToString("C2"));
+                    Console.WriteLine($"Your current total is " + Compute.ShowSubtotal().ToString("C2"));
 
 
 
