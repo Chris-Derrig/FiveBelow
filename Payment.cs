@@ -8,7 +8,7 @@ namespace FiveBelowShop
     class Payment
     {
         #region Payment Methods
-        public static void Money()
+        public static string Money()
         //Visa needs a 4 then 15 numbers
 
         //MasterCard needs a 5 then a #1-5 then 14 numbers
@@ -31,14 +31,17 @@ namespace FiveBelowShop
                 if (payment.ToLower() == "credit")
                 {
                     Credit();
+                    return payment;
                 }
                 else if (payment.ToLower() == "cash")
                 {
                     Cash();
+                    return payment;
                 }
                 else if (payment.ToLower() == "check")
                 {
                     Check();
+                    return payment;
                 }
                 else
                 {
@@ -78,23 +81,43 @@ namespace FiveBelowShop
                 if ((Regex.IsMatch(credit, @"(^4\d{15}$)")))
                 {
                     Console.WriteLine("Visa Card.. Valid Input");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Five Below Bodega Receipt\n");
+                    Console.WriteLine("Subtotal......................" + Compute.ShowSubtotal().ToString("C2"));
+                    Console.WriteLine("Tax..........................." + Compute.Taxtotal(Compute.ShowSubtotal()).ToString("C2"));
+                    Console.WriteLine("Total........................." + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())).ToString("C2"));
+                    Console.WriteLine("Visa Card................ ....XXXX");
                     //Next; Jumps down to printing receipt
-                    goto Next;
                 }
                 else if ((Regex.IsMatch(credit, @"(^5[1-5]\d{14}$)")))
                 {
                     Console.WriteLine("Master Card.. Valid Input");
-                    goto Next;
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Five Below Bodega Receipt\n");
+                    Console.WriteLine("Subtotal......................" + Compute.ShowSubtotal().ToString("C2"));
+                    Console.WriteLine("Tax..........................." + Compute.Taxtotal(Compute.ShowSubtotal()).ToString("C2"));
+                    Console.WriteLine("Total........................." + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())).ToString("C2"));
+                    Console.WriteLine("Master Card...............XXXX");
                 }
                 else if ((Regex.IsMatch(credit, @"(^6(?:011\d\d|5\d{4}|4[4-9]\d{3}|22(?:1(?:2[6-9]|[3-9]\d)|[2-8]\d\d|9(?:[01]\d|2[0-5])))\d{10}$)")))
                 {
                     Console.WriteLine("Discover Card.. Valid Input");
-                    goto Next;
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Five Below Bodega Receipt\n");
+                    Console.WriteLine("Subtotal......................" + Compute.ShowSubtotal().ToString("C2"));
+                    Console.WriteLine("Tax..........................." + Compute.Taxtotal(Compute.ShowSubtotal()).ToString("C2"));
+                    Console.WriteLine("Total........................." + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())).ToString("C2"));
+                    Console.WriteLine("Discover..................XXXX");
                 }
                 else if ((Regex.IsMatch(credit, @"(^3[47]\d{13}$)")))
                 {
                     Console.WriteLine("American Express.. Valid Input");
-                    goto Next;
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Five Below Bodega Receipt\n");
+                    Console.WriteLine("Subtotal......................" + Compute.ShowSubtotal().ToString("C2"));
+                    Console.WriteLine("Tax..........................." + Compute.Taxtotal(Compute.ShowSubtotal()).ToString("C2"));
+                    Console.WriteLine("Total........................." + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())).ToString("C2"));
+                    Console.WriteLine("AMEX......................XXXX");
                 }
                 else
                 {
@@ -118,16 +141,6 @@ namespace FiveBelowShop
                 //goes back to the top asking how to input their card number
                 goto Start;
             }
-
-        //if valid input Next; jumps down to here
-        Next:
-            Console.WriteLine("Please wait.");
-
-            Console.WriteLine("....");
-            Console.WriteLine("....");
-
-            Console.WriteLine("No change back.");
-            Console.WriteLine("Printing Reciept.");
         }
         public static void Cash()
         {
@@ -140,13 +153,18 @@ namespace FiveBelowShop
                 {
                     if (Change(cash) < Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())))
                     {
-                        Console.WriteLine("Cash");
-                        Console.WriteLine("Your Balance is " + ChangeDue(Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())), Change(cash)).ToString("C2") + "\n");
-
+                        Console.WriteLine("Sorry, Please pay in full.");
+                        Money();
                     }
                     else if (Change(cash) >= Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())))
                     {
-                        Console.WriteLine("Your Change is " + ChangeDue(Change(cash), Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal()))).ToString("C2") + "\n");
+                        Console.WriteLine("\n");
+                        Console.WriteLine("Five Below Bodega Receipt\n");
+                        Console.WriteLine("Subtotal......................" + Compute.ShowSubtotal().ToString("C2"));
+                        Console.WriteLine("Tax..........................." + Compute.Taxtotal(Compute.ShowSubtotal()).ToString("C2"));
+                        Console.WriteLine("Total........................." + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())).ToString("C2"));
+                        Console.WriteLine("Cash......................" + cash);
+                        Console.WriteLine("Your Change is............... " + ChangeDue(Change(cash), Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal()))).ToString("C2") + "\n");
                     }
                 }
                 if ((!Regex.IsMatch(cash, @"(^[0-9]{1,3}\.[0-9]{2}$)")))
@@ -182,7 +200,13 @@ namespace FiveBelowShop
                 string cash = Console.ReadLine();
                 if ((Regex.IsMatch(cash, @"(^[0-9]{9}$)")))
                 {
-                    Console.WriteLine("Check");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Five Below Bodega Receipt\n");
+                    Console.WriteLine("Subtotal......................" + Compute.ShowSubtotal().ToString("C2"));
+                    Console.WriteLine("Tax..........................." + Compute.Taxtotal(Compute.ShowSubtotal()).ToString("C2"));
+                    Console.WriteLine("Total........................." + Compute.Grandtotal(Compute.ShowSubtotal(), Compute.TaxedAmount(Compute.ShowSubtotal())).ToString("C2"));
+                    Console.WriteLine("Check #................" + cash);
+                    Console.WriteLine("Paid In Full\n");
                 }
                 else if ((!Regex.IsMatch(cash, @"(^[0-9]{9}$)")))
                 {

@@ -15,12 +15,12 @@ namespace FiveBelowShop
 
             Console.WriteLine("Welcome to the Five Below shop!");
             Console.WriteLine("Here is a menu that you can select from.");
+            List<Product> recieptList = new List<Product>();
 
             //display list
             while (repeatTerminal)
             {
                 List<Product> productList = new List<Product>();
-                List<Product> recieptList = new List<Product>();
                 productList = HardList.GetProductList();
 
                 int itemQuantity;
@@ -43,7 +43,7 @@ namespace FiveBelowShop
                     double total = Compute.LineTotal(Product.SetPrice(item, productList), itemQuantity);
 
                     //Product item is added to receipt
-                    recieptList.Add( Product.AddToReceipt(item, itemQuantity, productList));
+                    recieptList.Add(Product.AddToReceipt(item, itemQuantity, productList));
 
                     //notify the customer that item is added to cart and print running total
                     Console.WriteLine(Product.ShowObject(item, recieptList) + " has been added to the list\n");
@@ -63,6 +63,7 @@ namespace FiveBelowShop
                         mainRepeat = true;
                     }
                 }
+
                 #region Display the lineitems line totals, subtotal, tax, grandtotal
 
                 Console.WriteLine("\n");
@@ -86,6 +87,7 @@ namespace FiveBelowShop
                 ////Validate Payment method
                 Payment.Money();
 
+
                 Console.WriteLine("Would you like to place another order (y or n)?");
                 anotherOrder = Validate.startAnother(Console.ReadLine());
                 if (anotherOrder == "n")
@@ -100,5 +102,4 @@ namespace FiveBelowShop
             }
         }
     }
-    
 }
