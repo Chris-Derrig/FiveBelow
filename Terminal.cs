@@ -1,5 +1,4 @@
 ﻿
-
 using System;
 
 using System.Collections.Generic;
@@ -33,6 +32,7 @@ namespace FiveBelowShop
             Console.WriteLine("Welcome to the Five Below shop!");
 
             Console.WriteLine("Here is a menu that you can select from.");
+
             List<Product> recieptList = new List<Product>();
 
 
@@ -44,12 +44,7 @@ namespace FiveBelowShop
             {
 
                 List<Product> productList = new List<Product>();
-<<<<<<< HEAD
 
-                List<Product> recieptList = new List<Product>();
-
-=======
->>>>>>> fe3472d3a36bfd1153b8a7d1f7ae9079cbc9b04b
                 productList = HardList.GetProductList();
 
 
@@ -93,14 +88,10 @@ namespace FiveBelowShop
 
 
                     //Product item is added to receipt
-<<<<<<< HEAD
 
                     recieptList.Add(Product.AddToReceipt(item, itemQuantity, productList));
 
 
-=======
-                    recieptList.Add(Product.AddToReceipt(item, itemQuantity, productList));
->>>>>>> fe3472d3a36bfd1153b8a7d1f7ae9079cbc9b04b
 
                     //notify the customer that item is added to cart and print running total
 
@@ -137,6 +128,8 @@ namespace FiveBelowShop
                     }
 
                 }
+
+
 
                 #region Display the lineitems line totals, subtotal, tax, grandtotal
 
@@ -183,10 +176,9 @@ namespace FiveBelowShop
                 Payment.Money();
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> fe3472d3a36bfd1153b8a7d1f7ae9079cbc9b04b
+
+
                 Console.WriteLine("Would you like to place another order (y or n)?");
 
                 anotherOrder = Validate.startAnother(Console.ReadLine());
@@ -214,10 +206,5 @@ namespace FiveBelowShop
         }
 
     }
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> fe3472d3a36bfd1153b8a7d1f7ae9079cbc9b04b
 }
